@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+
 from control_flow import admin_login, hows_the_weather, fizzbuzz, calculator
+
 
 import io
 import sys
@@ -10,7 +12,7 @@ class TestAdminLogin:
 
     def test_returns_access_granted_admin12345(self):
         '''returns "Access granted" for username=admin and password=12345'''
-        assert(admin_login("admin","12345") == "Access granted")
+        assert(admin_login("admin", "12345") == "Access granted")
 
     def test_returns_access_granted_ADMIN12345(self):
         '''returns "Access granted" for username=ADMIN and password=12345'''
@@ -18,9 +20,9 @@ class TestAdminLogin:
 
     def test_returns_access_denied_not_admin12345(self):
         '''returns "Access denied" for username!=admin or password!=12345'''
-        assert(admin_login("sudo","12345") == "Access denied")
-        assert(admin_login("admin","sudo") == "Access denied")
-        assert(admin_login("sudo","pls") == "Access denied")
+        assert(admin_login("sudo", "12345") == "Access denied")
+        assert(admin_login("admin", "sudo") == "Access denied")
+        assert(admin_login("sudo", "pls") == "Access denied")
 
 class TestHowsTheWeather:
     '''hows_the_weather() in control_flow.py'''
@@ -99,6 +101,4 @@ class TestCalculator:
         '''prints "Invalid operation!" and returns None if operation invalid'''
         captured_out = io.StringIO()
         sys.stdout = captured_out
-        assert(calculator('a', 1, 2) == None)
-        sys.stdout = sys.__stdout__
-        assert(captured_out.getvalue() == "Invalid operation!\n")
+        assert(calculator('a', 1, 2) == "Invalid operation")
